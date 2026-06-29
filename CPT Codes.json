@@ -1,0 +1,2718 @@
+{
+  "name": "CPT Codes",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "create",
+        "documentId": {
+          "__rl": true,
+          "value": "1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw",
+          "mode": "list",
+          "cachedResultName": "CPT Code - General",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw/edit?usp=drivesdk"
+        },
+        "title": "={{ $json.body.full_name }} - {{ $json.body.contact_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        960,
+        352
+      ],
+      "id": "25a8594d-09f5-410c-9a39-79d0f35c7ab2",
+      "name": "Create sheet1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "K5ztHg5JVxzXZeE3",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw",
+          "mode": "list",
+          "cachedResultName": "CPT Code - General",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $('Webhook - GSV').item.json.body.full_name }} - {{ $('Webhook - GSV').item.json.body.contact_id }}",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "DOB",
+              "displayName": "DOB",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Procedure",
+              "displayName": "Procedure",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CPT 99203 Status",
+              "displayName": "CPT 99203 Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CPT 99204 Status",
+              "displayName": "CPT 99204 Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CPT 99213 Status",
+              "displayName": "CPT 99213 Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CPT 99214 Status",
+              "displayName": "CPT 99214 Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CPT 99215 Status",
+              "displayName": "CPT 99215 Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1376,
+        352
+      ],
+      "id": "9b37953d-f14a-4220-a437-2d73add76935",
+      "name": "Append row in sheet1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "K5ztHg5JVxzXZeE3",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"Name\": \"{{ $('Webhook - GSV').item.json.body.full_name }}\",\n  \"Date of Birth\": \"{{ $('Webhook - GSV').item.json.body.date_of_birth ? $('Webhook - GSV').item.json.body.date_of_birth.split('T')[0] : '' }}\",\n\"Date of Surgery\": {{ $('Webhook - GSV').item.json.body['Date Of Surgery?'] }},\n\"Consent To Read\": {{ $('Webhook - GSV').item.json.body['CONSENT TO READ:'] }} ,\n\"Date of submission\": \"{{ $now.toFormat('MM/dd/yyyy') }}\",\n\"Insurance\": Nil\n\"Member ID\": {{ $('Webhook - GSV').item.json.body.contact_id }},\n\"Auth NO\": Nil\n\"GSV RSA - 36475\": New,\n\"US Use - 76937\": New\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1168,
+        352
+      ],
+      "id": "60495442-bd12-457b-9fe9-107d1609db1d",
+      "name": "Edit Fields1",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "content": "Angiogram\n"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -192
+      ],
+      "id": "41b6e8a5-bd97-4bef-a767-1b4203442a3e",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "GSV"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        752,
+        160
+      ],
+      "id": "960329b6-d75a-4535-ba59-51cf8930999a",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "documentId": {
+          "__rl": true,
+          "value": "1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw",
+          "mode": "list",
+          "cachedResultName": "CPT Code - General",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw/edit?usp=drivesdk"
+        },
+        "title": "={{ $json.body.full_name }} - {{ $json.body.contact_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2032,
+        736
+      ],
+      "id": "d7e76c9c-73dc-4bc0-a7cc-4f1e8f5148ca",
+      "name": "Create sheet2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "K5ztHg5JVxzXZeE3",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw",
+          "mode": "list",
+          "cachedResultName": "CPT Code - General",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $('Create sheet2').item.json.title }}",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2448,
+        736
+      ],
+      "id": "5094e3d2-a8f0-465a-b545-ba6438914ebb",
+      "name": "Append row in sheet2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "K5ztHg5JVxzXZeE3",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"name\": \"{{ $('Webhook - Fistulagram').item.json.body.full_name }}\",\n  \"Date of Birth\": \"{{ $('Webhook - Fistulagram').item.json.body.date_of_birth ? $('Webhook - Fistulagram').item.json.body.date_of_birth.split('T')[0] : '' }}\",\n\"Date of Surgery\": {{ $('Webhook - Fistulagram').item.json.body['Date Of Surgery?'] }},\n\"Consent To Read\": {{ $('Webhook - Fistulagram').item.json.body['CONSENT TO READ:'] }} ,\n\"Date of Submission\": \"{{ $now.toFormat('MM/dd/yyyy') }}\",\n\"Insurance\": Nil,\n\"Member ID\": {{ $('Webhook - Fistulagram').item.json.body.contact_id }},\n\"Auth NO\": Nil,\n\"Code 36901\": New,\n    \"Code 36902\": New,\n    \"Code 36903\": New,\n    \"Code 36904\": New,\n    \"Code 36905\": New,\n    \"Code 36906\": New,\n    \"Code 36907\": New,\n    \"Code 36908\": New,\n    \"Code 36909\": New,\n    \"Code 36215\": New,\n    \"Code 75827\": New,\n    \"Code 36010\": New\n  } ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2240,
+        736
+      ],
+      "id": "7fd6d0f4-2fc4-4edd-86e8-2a0a4d6f0a46",
+      "name": "Edit Fields2",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "content": "Fistulagram"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1808,
+        544
+      ],
+      "id": "31fefb28-09ec-4b33-af92-c7031b96d8e5",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/{{ $('Create sheet2').item.json.spreadsheetId }}:batchUpdate",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"requests\": [\n    {\n      \"setDataValidation\": {\n        \"range\": {\n          \"sheetId\": {{ $('Create sheet2').item.json.sheetId }},\n          \"startRowIndex\": 1,\n          \"endRowIndex\": 500,\n          \"startColumnIndex\": 8,\n          \"endColumnIndex\": 30\n        },\n        \"rule\": {\n          \"condition\": {\n            \"type\": \"ONE_OF_LIST\",\n            \"values\": [\n              { \"userEnteredValue\": \"Requested\" },\n              { \"userEnteredValue\": \"auth approved\" },\n              { \"userEnteredValue\": \"MR requested Appealed\" },\n              { \"userEnteredValue\": \"final\" },\n              { \"userEnteredValue\": \"denied\" }\n            ]\n          },\n          \"strict\": true,\n          \"showCustomUi\": true\n        }\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2656,
+        736
+      ],
+      "id": "b9439cee-e0b3-417a-aa58-470003e8da61",
+      "name": "HTTP Request",
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "ZwC5K50CrPUIUT9s",
+          "name": "Google account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/{{$node[\"Create sheet1\"].json.spreadsheetId}}:batchUpdate",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"requests\": [\n    {\n      \"setDataValidation\": {\n        \"range\": {\n          \"sheetId\": {{ $('Create sheet1').item.json.sheetId }},\n          \"startRowIndex\": 1,\n          \"endRowIndex\": 500,\n          \"startColumnIndex\": 8,\n          \"endColumnIndex\": 100\n        },\n        \"rule\": {\n          \"condition\": {\n            \"type\": \"ONE_OF_LIST\",\n            \"values\": [\n              { \"userEnteredValue\": \"Requested\" },\n              { \"userEnteredValue\": \"auth approved\" },\n              { \"userEnteredValue\": \"MR requested Appealed\" },\n              { \"userEnteredValue\": \"final\" },\n              { \"userEnteredValue\": \"denied\" }\n            ]\n          },\n          \"strict\": true,\n          \"showCustomUi\": true\n        }\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1600,
+        352
+      ],
+      "id": "e4db9c55-2751-41c4-8734-fa0b70407f46",
+      "name": "HTTP Request1",
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "ZwC5K50CrPUIUT9s",
+          "name": "Google account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "General"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1824,
+        992
+      ],
+      "id": "43d4c363-ea9a-4f48-aabb-81820c4bbfa6",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a certified medical coding assistant specializing in CPT code identification for surgical procedures.\n\n## Task\nAnalyze {{ $json.body[\"CONSENT TO READ:\"] }} for procedure(s) and return the complete set of CPT codes required to bill for all procedures described.\n\n## Step 1 — Identify the Surgeon's Specialty\nMatch the surgeon's name to their specialty using this reference list:\n\n| Surgeon | Credential | Specialty |\n|---|---|---|\n| Dr. Peter Hanna | DPM | Podiatrist — Foot & Ankle Surgeon |\n| Dr. Siavash Rostami | DPM | Podiatrist — Foot & Ankle Surgeon |\n| Dr. Daniel Ginsberg | DPM | Podiatrist — Foot & Ankle Surgeon |\n| Dr. Kevin Suarez | DPM | Podiatrist — Foot & Ankle Surgeon |\n| Dr. Paul Hanna | DO | Vascular Surgeon |\n| Dr. Austin Price | DO | Vascular Surgeon |\n\nIf the surgeon's name is not in this list, infer the most likely specialty from context, and explicitly flag this as an assumption.\n\n## Step 2 — Analyze the Consent Text\nThe consent may describe a single procedure or multiple procedures, and may use informal, abbreviated, or partial terminology. Carefully parse all procedures mentioned, including:\n- Primary procedures explicitly named\n- Related or component procedures typically performed alongside the primary procedure\n- Any procedure implied by standard surgical bundles for the identified specialty\n\n## Step 3 — Apply Coding Standards\n\nAll services are rendered in the state of Florida. Apply:\n\n* The most current 2026 Medicare Physician Fee Schedule (MPFS) guidelines for Florida\n* Standard CPT bundling and unbundling rules (NCCI edits) where relevant\n* Specialty-appropriate code sets (e.g., podiatry-specific codes for DPM surgeons, vascular intervention codes for DO vascular surgeons)\n* When a procedure description is non-specific, incomplete, abbreviated, or could reasonably correspond to multiple CPT codes, return all CPT codes that may apply based on the documented procedure. Do not arbitrarily select a single code when multiple codes are clinically and coding-wise plausible.\n* When the consent describes a family of procedures, a procedural approach without sufficient detail, or terminology that maps to a CPT code range, return the complete set of potentially applicable CPT codes rather than narrowing to one code without supporting documentation.\n\n### Example\n\nConsent Text:\n\"Excision of soft tissue mass, foot\"\n\nPossible Output:\n[\"28043\", \"28045\", \"28047\"]\n\nReason: The consent does not specify the depth, size, or tissue involvement sufficiently to determine a single CPT code, so all clinically plausible CPT codes are returned.\n\n\n## Output Format\nReturn ONLY a JSON array of CPT codes as strings, with no explanation, no markdown, and no additional text.\n\nExample: [\"28296\", \"28298\", \"20902\"]\n\nIf you must flag an assumption (e.g., unrecognized surgeon or ambiguous procedure), do so by appending a single object at the end of the array with a \"note\" field instead of breaking the array format:\n[\"28296\", \"28298\", {\"note\": \"Surgeon not recognized; specialty inferred as general surgery\"}]",
+        "options": {
+          "systemMessage": "You are a medical billing assistant with expertise in CPT coding. \nWhen given a procedure description — even a broad one like \"Integumentary System\" — \nyou MUST return a JSON array of the most commonly used CPT codes for that category. \nNever ask for clarification. Always make your best clinical judgment and return 5-10 \nrelevant codes covering the most typical procedures in that category.\n\nReturn ONLY a JSON array. No explanation, no markdown, no backticks.\nExample output: [\"11042\", \"11043\", \"11044\", \"11045\", \"11046\"]"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        2064,
+        1184
+      ],
+      "id": "5dbbd51b-d0f0-4d21-9e52-2d8a76d8deaf",
+      "name": "CPT Codes - SFLMED"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "0d376ba3-da1f-4e50-83b0-2ed415a703db",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        1680,
+        1184
+      ],
+      "id": "ebb42359-5190-41c8-b17b-411e1bfd2d00",
+      "name": "Webhook2",
+      "webhookId": "0d376ba3-da1f-4e50-83b0-2ed415a703db"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Webhook2').item.json.body.id }} - {{ $('Webhook2').item.json.body.name }}",
+        "contextWindowLength": 20
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        2112,
+        1424
+      ],
+      "id": "f274a05d-7ef8-42b2-97bc-2a81be646540",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "3b34de39-8091-48c5-9f5d-254d7f59a18a",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        1808,
+        736
+      ],
+      "id": "0a2983ed-6926-4f85-9930-476f33a95e15",
+      "name": "Webhook - Fistulagram",
+      "webhookId": "3b34de39-8091-48c5-9f5d-254d7f59a18a"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "baa4151f-1398-423c-95a7-9bf89b378060",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        752,
+        352
+      ],
+      "id": "f30275c9-a386-4745-b600-90be53dfa997",
+      "name": "Webhook - GSV",
+      "webhookId": "baa4151f-1398-423c-95a7-9bf89b378060"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6c52d234-d314-48ac-acec-12a751db4584",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -304,
+        32
+      ],
+      "id": "d3c5fef7-d031-4fd1-9f44-c1ecf21977a4",
+      "name": "Webhook",
+      "webhookId": "6c52d234-d314-48ac-acec-12a751db4584"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "documentId": {
+          "__rl": true,
+          "value": "1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw",
+          "mode": "list",
+          "cachedResultName": "CPT Code - General",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw/edit?usp=drivesdk"
+        },
+        "title": "={{ $json.body.full_name }} - {{ $json.body.contact_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -96,
+        32
+      ],
+      "id": "3c0f53df-a5b0-446d-8648-581840c5c24b",
+      "name": "Create sheet",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "K5ztHg5JVxzXZeE3",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"name\": \"{{ $('Webhook').item.json.body.full_name }}\",\n  \"Date of Birth\": \"{{ $('Webhook').item.json.body.date_of_birth ? $('Webhook').item.json.body.date_of_birth.split('T')[0] : '' }}\",\n  \"Consent To Read\": \"{{ $('Webhook').item.json.body['CONSENT TO READ:'] }}\",\n  \"Date of Submission\": \"{{ $now.toFormat('MM/dd/yyyy') }}\",\n  \"Insurance\": \"Nil\",\n  \"Member ID\": \"{{ $('Webhook').item.json.body.contact_id }}\",\n  \"Auth No\": \"Nil\",\n  \"Code 36245\": \"New\",\n  \"Code 36246\": \"New\",\n  \"Code 36247\": \"New\",\n  \"Code 36248\": \"New\",\n  \"Code 37184\": \"New\",\n  \"Code 37252\": \"New\",\n  \"Code 37253\": \"New\",\n  \"Code 37254\": \"New\",\n  \"Code 37255\": \"New\",\n  \"Code 37256\": \"New\",\n  \"Code 37257\": \"New\",\n  \"Code 37258\": \"New\",\n  \"Code 37259\": \"New\",\n  \"Code 37260\": \"New\",\n  \"Code 37261\": \"New\",\n  \"Code 37263\": \"New\",\n  \"Code 37265\": \"New\",\n  \"Code 37267\": \"New\",\n  \"Code 37269\": \"New\",\n  \"Code 37271\": \"New\",\n  \"Code 37273\": \"New\",\n  \"Code 37275\": \"New\",\n  \"Code 37277\": \"New\",\n  \"Code 37280\": \"New\",\n  \"Code 37281\": \"New\",\n  \"Code 37282\": \"New\",\n  \"Code 37283\": \"New\",\n  \"Code 37284\": \"New\",\n  \"Code 37285\": \"New\",\n  \"Code 37286\": \"New\",\n  \"Code 37287\": \"New\",\n  \"Code 37288\": \"New\",\n  \"Code 37289\": \"New\",\n  \"Code 37290\": \"New\",\n  \"Code 37291\": \"New\",\n  \"Code 37292\": \"New\",\n  \"Code 37293\": \"New\",\n  \"Code 37294\": \"New\",\n  \"Code 37295\": \"New\",\n  \"Code 75625\": \"New\",\n  \"Code 75710\": \"New\",\n  \"Code 75716\": \"New\",\n  \"Code 76937\": \"New\",\n  \"Code 99152\": \"New\",\n  \"Code 99153\": \"New\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        112,
+        32
+      ],
+      "id": "1174a10d-4572-484b-bd0f-fbcbb94dfab3",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw",
+          "mode": "list",
+          "cachedResultName": "CPT Code - General",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $('Create sheet').item.json.title }}",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Date of Birth",
+              "displayName": "Date of Birth",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Date of Surgery",
+              "displayName": "Date of Surgery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Consent To Read",
+              "displayName": "Consent To Read",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Code 36245",
+              "displayName": "Code 36245",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Code 36246",
+              "displayName": "Code 36246",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Code 36247",
+              "displayName": "Code 36247",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Code 36248",
+              "displayName": "Code 36248",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Code 75625",
+              "displayName": "Code 75625",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Code 75710",
+              "displayName": "Code 75710",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Code 75716",
+              "displayName": "Code 75716",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Code 76937",
+              "displayName": "Code 76937",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Code 99152",
+              "displayName": "Code 99152",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Code 99153",
+              "displayName": "Code 99153",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        320,
+        32
+      ],
+      "id": "c99880ad-5548-4869-bff5-eca79c6921dc",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "K5ztHg5JVxzXZeE3",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/{{ $('Create sheet').first().json.spreadsheetId }}:batchUpdate",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Content-Type\": \"application/json\"\n}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        736,
+        32
+      ],
+      "id": "633b0268-8639-4bda-9fe3-9daebb41ca1f",
+      "name": "HTTP Request2",
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "ZwC5K50CrPUIUT9s",
+          "name": "Google account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Grab the sheetId from the previous Create sheet node\nconst sheetId = $('Create sheet').first().json.sheetId;\n\n// Build the full request body\nconst body = {\n  requests: [\n    {\n      setDataValidation: {\n        range: {\n          sheetId: sheetId,\n          startRowIndex: 1,\n          endRowIndex: 500,\n          startColumnIndex: 7,\n          endColumnIndex: 100\n        },\n        rule: {\n          condition: {\n            type: \"ONE_OF_LIST\",\n            values: [\n              { userEnteredValue: \"Requested\" },\n              { userEnteredValue: \"Auth Approved\" },\n              { userEnteredValue: \"MR Requested / Appealed\" },\n              { userEnteredValue: \"Final\" },\n              { userEnteredValue: \"Denied\" }\n            ]\n          },\n          strict: true,\n          showCustomUi: true\n        }\n      }\n    }\n  ]\n};\n\nreturn [{ json: body }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        528,
+        32
+      ],
+      "id": "2e6ebba1-44f7-4ed8-927a-04009bb82f10",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw:batchUpdate",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Content-Type\": \"application/json\"\n}",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={{ $('Code in JavaScript1').first().json.body }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2896,
+        1184
+      ],
+      "id": "6557ee9f-86fc-4385-9c6c-5ea7b25c4ff7",
+      "name": "HTTP Request all in one",
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "ZwC5K50CrPUIUT9s",
+          "name": "Google account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1952,
+        1408
+      ],
+      "id": "d55fe2ce-ad51-4ed2-ab83-3ad0410f86cf",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "kb0flyW2hgoFbSRj",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ── 1. Parse CPT codes ─────────────────────────────────────────\nconst agentOutput = $('CPT Codes - SFLMED').first().json.output;\nlet cptCodes = [];\ntry {\n  cptCodes = JSON.parse(agentOutput);\n} catch {\n  cptCodes = agentOutput.match(/\\d{5}/g) || [];\n}\n\n// ── 2. Get webhook data - handle all possible body structures ──\nconst raw = $('Webhook2').first().json;\nconst body = raw?.body?.body || raw?.body?.[0]?.body || raw?.body || raw;\n\n// Debug - remove after confirming\nconsole.log('raw keys:', Object.keys(raw));\nconsole.log('body keys:', Object.keys(body));\nconsole.log('full_name:', body.full_name);\n\nconst fullName = body.full_name || body.name || body.full_name || 'Unknown';\nconst contactId = body.contact_id || '';\nconst procedure = body['CONSENT TO READ:'] || body.proccedure || body.procedure || '';\nconst dobRaw = body.date_of_birth;\nconst dob = (dobRaw && dobRaw !== 'null')\n  ? (() => {\n      const [year, month, day] = dobRaw.split('T')[0].split('-');\n      return `${month}/${day}/${year}`;\n    })()\n  : '';\nconst phone = body.phone || '';\nconst dateOfSurgery = body['Requested Date for surgery (Approximate)']\n  || body['Date Of Surgery?']\n  || body['Which Hospital/ Date Of Surgery']\n  || '';\nconst insurance = body['Insurance Provider Name']\n  || body['Primary Insurance']\n  || body['Insurance Company:']\n  || 'Nil';\nconst dateOfSubmission = new Date().toLocaleDateString('en-US', {\n  month: '2-digit', day: '2-digit', year: 'numeric'\n});\nconst sheetTitle = `${fullName} ${contactId}`.trim();\n\n// ── 3. Get sheetId - handle both test and production structures\nconst sheetData = $('Create sheet3').first().json;\nconst sheetId = Number(sheetData.properties?.sheetId ?? sheetData.sheetId ?? 0);\n\n// ── 4. Build headers and data row ──────────────────────────────\nconst fixedHeaders = [\n  'Name', 'Date of Birth', 'Date of Surgery', 'Consent To Read',\n  'Date of Submission', 'Insurance', 'Member ID', 'Auth NO'\n];\nconst cptHeaders = cptCodes.map(c => `CPT ${c} Status`);\nconst allHeaders = [...fixedHeaders, ...cptHeaders];\n\nconst dataRow = [\n  fullName, dob, dateOfSurgery, procedure,\n  dateOfSubmission, insurance, contactId, 'Nil',\n  ...cptCodes.map(() => 'New')\n];\n\n// ── 5. Build batchUpdate requests ──────────────────────────────\nconst spreadsheetId = '1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw';\nconst toCell = val => ({ userEnteredValue: { stringValue: String(val ?? '') } });\n\nconst requests = [\n  {\n    updateCells: {\n      rows: [{ values: allHeaders.map(toCell) }],\n      fields: 'userEnteredValue',\n      start: { sheetId, rowIndex: 0, columnIndex: 0 }\n    }\n  },\n  {\n    updateCells: {\n      rows: [{ values: dataRow.map(toCell) }],\n      fields: 'userEnteredValue',\n      start: { sheetId, rowIndex: 1, columnIndex: 0 }\n    }\n  },\n  ...cptCodes.map((code, i) => ({\n    setDataValidation: {\n      range: {\n        sheetId,\n        startRowIndex: 1, endRowIndex: 500,\n        startColumnIndex: 8 + i, endColumnIndex: 9 + i\n      },\n      rule: {\n        condition: {\n          type: 'ONE_OF_LIST',\n          values: [\n            { userEnteredValue: 'New' },\n            { userEnteredValue: 'Authenticated' },\n            { userEnteredValue: 'Auth Approved' },\n            { userEnteredValue: 'MR Requested / Appealed' },\n            { userEnteredValue: 'Final' },\n            { userEnteredValue: 'Denied' }\n          ]\n        },\n        strict: true,\n        showCustomUi: true\n      }\n    }\n  }))\n];\n\nreturn [{\n  json: {\n    spreadsheetId,\n    sheetId,\n    sheetTitle,\n    fullName,\n    contactId,\n    procedure,\n    dob,\n    phone,\n    dateOfSurgery,\n    insurance,\n    dateOfSubmission,\n    body: JSON.stringify({ requests })\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2640,
+        1184
+      ],
+      "id": "45195b63-a762-4b54-b38b-5fd946b31208",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "documentId": {
+          "__rl": true,
+          "value": "1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw",
+          "mode": "list",
+          "cachedResultName": "CPT Code - General",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw/edit?usp=drivesdk"
+        },
+        "title": "={{ $('Webhook2').item.json.body.full_name }}+{{ $('Webhook2').item.json.body.contact_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2416,
+        1184
+      ],
+      "id": "976bab07-ad4f-4995-99ae-76f30270c869",
+      "name": "Create sheet3",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "K5ztHg5JVxzXZeE3",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a certified medical coding assistant specializing in CPT code identification for surgical procedures.\n\n## Task\nAnalyze {{ $json.body[\"CONSENT TO READ:\"] }} for procedure(s) and return the complete set of CPT codes required to bill for all procedures described.\n\n## Step 1 — Identify the Surgeon's Specialty\nMatch the surgeon's name to their specialty using this reference list:\n\n| Surgeon | Credential | Specialty |\n|---|---|---|\n| Dr. Peter Hanna | DPM | Podiatrist — Foot & Ankle Surgeon |\n| Dr. Siavash Rostami | DPM | Podiatrist — Foot & Ankle Surgeon |\n| Dr. Daniel Ginsberg | DPM | Podiatrist — Foot & Ankle Surgeon |\n| Dr. Kevin Suarez | DPM | Podiatrist — Foot & Ankle Surgeon |\n| Dr. Paul Hanna | DO | Vascular Surgeon |\n| Dr. Austin Price | DO | Vascular Surgeon |\n\nIf the surgeon's name is not in this list, infer the most likely specialty from context, and explicitly flag this as an assumption.\n\n## Step 2 — Analyze the Consent Text\nThe consent may describe a single procedure or multiple procedures, and may use informal, abbreviated, or partial terminology. Carefully parse all procedures mentioned, including:\n- Primary procedures explicitly named\n- Related or component procedures typically performed alongside the primary procedure\n- Any procedure implied by standard surgical bundles for the identified specialty\n\n## Step 3 — Apply Coding Standards\n\nAll services are rendered in the state of Florida. Apply:\n\n* The most current 2026 Medicare Physician Fee Schedule (MPFS) guidelines for Florida\n* Standard CPT bundling and unbundling rules (NCCI edits) where relevant\n* Specialty-appropriate code sets (e.g., podiatry-specific codes for DPM surgeons, vascular intervention codes for DO vascular surgeons)\n* When a procedure description is non-specific, incomplete, abbreviated, or could reasonably correspond to multiple CPT codes, return all CPT codes that may apply based on the documented procedure. Do not arbitrarily select a single code when multiple codes are clinically and coding-wise plausible.\n* When the consent describes a family of procedures, a procedural approach without sufficient detail, or terminology that maps to a CPT code range, return the complete set of potentially applicable CPT codes rather than narrowing to one code without supporting documentation.\n\n### Example\n\nConsent Text:\n\"Excision of soft tissue mass, foot\"\n\nPossible Output:\n[\"28043\", \"28045\", \"28047\"]\n\nReason: The consent does not specify the depth, size, or tissue involvement sufficiently to determine a single CPT code, so all clinically plausible CPT codes are returned.\n\n\n## Output Format\nReturn ONLY a JSON array of CPT codes as strings, with no explanation, no markdown, and no additional text.\n\nExample: [\"28296\", \"28298\", \"20902\"]\n\nIf you must flag an assumption (e.g., unrecognized surgeon or ambiguous procedure), do so by appending a single object at the end of the array with a \"note\" field instead of breaking the array format:\n[\"28296\", \"28298\", {\"note\": \"Surgeon not recognized; specialty inferred as general surgery\"}]",
+        "options": {
+          "systemMessage": "You are a medical billing assistant with expertise in CPT coding. \nWhen given a procedure description — even a broad one like \"Integumentary System\" — \nyou MUST return a JSON array of the most commonly used CPT codes for that category. \nNever ask for clarification. Always make your best clinical judgment and return 5-10 \nrelevant codes covering the most typical procedures in that category.\n\nReturn ONLY a JSON array. No explanation, no markdown, no backticks.\nExample output: [\"11042\", \"11043\", \"11044\", \"11045\", \"11046\"]"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        6304,
+        1776
+      ],
+      "id": "d98670a2-cd4b-4745-8f84-9ad10c645be6",
+      "name": "CPT Codes - SFLMED1"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "0d376ba3-da1f-4e50-83b0-2ed415a703db",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        5504,
+        1648
+      ],
+      "id": "e4b53a02-c1b1-4e99-a978-a20571079980",
+      "name": "Webhook3",
+      "webhookId": "0d376ba3-da1f-4e50-83b0-2ed415a703db"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Webhook3').item.json.body.id }} - {{ $('Webhook3').item.json.body.name }}",
+        "contextWindowLength": 20
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        6352,
+        1936
+      ],
+      "id": "1bb0ed19-6ae6-4a5e-8658-bc8d951f7153",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        6128,
+        1920
+      ],
+      "id": "715d4d6d-eca1-4d8e-857a-f3aadc23c1b1",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "kb0flyW2hgoFbSRj",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://sheets.googleapis.com/v4/spreadsheets/1SLnqd-RfXCUqPpKOXe6pq0kkUmlXHBbtV1ss6xHIjzE?fields=sheets.properties",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        6784,
+        1632
+      ],
+      "id": "dcfeecaf-1566-4d0d-b49d-08422cf68987",
+      "name": "Get Spreadsheet Metadata",
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "IyUwNwwf79D4kKsY",
+          "name": "Google account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const sheetTitle = $('Extract Webhook1').first().json.sheetTitle;\nconst sheetsMeta = $input.first().json.sheets || [];\n\nconst matchingSheet = sheetsMeta.find(s => s.properties.title === sheetTitle);\n\nreturn [{\n  json: {\n    sheetExists: !!matchingSheet,\n    sheetId: matchingSheet ? matchingSheet.properties.sheetId : null,\n    sheetTitle\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7072,
+        1632
+      ],
+      "id": "515985b5-1624-4633-9e90-e1dfe80a1a48",
+      "name": "Find Matching Sheet"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "7386cec9-40fe-45cf-9912-92a1eb5bbfd7",
+              "leftValue": "={{ $json.sheetExists === true }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        7360,
+        1632
+      ],
+      "id": "804600ac-3f87-479f-8dc6-f324fb8caf38",
+      "name": "{{ $json.sheetExists }} is true"
+    },
+    {
+      "parameters": {
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/1SLnqd-RfXCUqPpKOXe6pq0kkUmlXHBbtV1ss6xHIjzE/values/'{{ $json.sheetTitle }}'!A:A",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        7584,
+        1488
+      ],
+      "id": "854e76c3-4a47-41f2-b117-08ad226674f0",
+      "name": "Get Existing Values",
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "zYEppCmQjVtSppDL",
+          "name": "Google account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/1SLnqd-RfXCUqPpKOXe6pq0kkUmlXHBbtV1ss6xHIjzE:batchUpdate",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{ \"Content-Type\": \"application/json\" }",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  requests: [{\n    addSheet: {\n      properties: {\n        title: $json.sheetTitle,\n        gridProperties: {\n          rowCount: 1000,\n          columnCount: 100\n        }\n      }\n    }\n  }]\n}) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        7584,
+        1856
+      ],
+      "id": "7e4c4fa0-176a-402b-9d8f-b36efa293f15",
+      "name": "Add Sheet",
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "zYEppCmQjVtSppDL",
+          "name": "Google account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ── Pull from whichever branch ran ──────────────────────────────\nconst sheetInfo = $('Find Matching Sheet').first().json;\nlet sheetId = sheetInfo.sheetId;\n\ntry {\n  const addSheetResponse = $('Add Sheet').first().json;\n  if (addSheetResponse?.replies?.[0]?.addSheet?.properties?.sheetId !== undefined) {\n    sheetId = addSheetResponse.replies[0].addSheet.properties.sheetId;\n  }\n} catch {\n  // Add Sheet branch didn't run — sheetId already set from Find Matching Sheet\n}\n\nconst webhookData = $('Extract Webhook1').first().json;\n\nlet cptCodes = [];\nif (webhookData.predefinedCptCodes) {\n  cptCodes = webhookData.predefinedCptCodes;\n} else {\n  const agentOutput = $('CPT Codes - SFLMED1').first().json.output;\n  try {\n    cptCodes = JSON.parse(agentOutput);\n  } catch {\n    cptCodes = agentOutput.match(/\\d{5}/g) || [];\n  }\n}\n\n// ── Determine starting row ───────────────────────────────────────\nlet existingRows = 0;\ntry {\n  const values = $('Get Existing Values').first().json.values || [];\n  existingRows = values.length;\n} catch {\n  existingRows = 0;\n}\n\nconst headerRowIndex = existingRows;\nconst dataRowIndex = existingRows + 1;\n\n// ── Build headers and data row ───────────────────────────────────\nconst fixedHeaders = [\n  'Name',\n  'Date of Birth',\n  'Date of Surgery',\n  'Consent To Read',\n  'Date of Submission',\n  'Insurance',\n  'Member ID',\n  'Auth No'\n];\nconst cptHeaders = cptCodes.map(c => `CPT ${c} Status`);\nconst allHeaders = [...fixedHeaders, ...cptHeaders];\n\nconst dataRow = [\n  webhookData.fullName,\n  webhookData.dob,\n  webhookData.dateOfSurgery,\n  webhookData.procedure,\n  webhookData.dateOfSubmission,\n  webhookData.insurance,\n  webhookData.contactId,\n  'Nil',\n  ...cptCodes.map(() => 'New')\n];\n\nconst toCell = val => ({ userEnteredValue: { stringValue: String(val ?? '') } });\n\nconst requests = [\n  {\n    updateCells: {\n      rows: [{ values: allHeaders.map(toCell) }],\n      fields: 'userEnteredValue',\n      start: { sheetId, rowIndex: headerRowIndex, columnIndex: 0 }\n    }\n  },\n  {\n    updateCells: {\n      rows: [{ values: dataRow.map(toCell) }],\n      fields: 'userEnteredValue',\n      start: { sheetId, rowIndex: dataRowIndex, columnIndex: 0 }\n    }\n  },\n  ...cptCodes.map((code, i) => ({\n    setDataValidation: {\n      range: {\n        sheetId,\n        startRowIndex: dataRowIndex,\n        endRowIndex: dataRowIndex + 1,\n        startColumnIndex: 8 + i,\n        endColumnIndex: 9 + i\n      },\n      rule: {\n        condition: {\n          type: 'ONE_OF_LIST',\n          values: [\n            { userEnteredValue: 'New' },\n            { userEnteredValue: 'Authenticated' },\n            { userEnteredValue: 'Auth Approved' },\n            { userEnteredValue: 'MR Requested / Appealed' },\n            { userEnteredValue: 'Final' },\n            { userEnteredValue: 'Denied' }\n          ]\n        },\n        strict: true,\n        showCustomUi: true\n      }\n    }\n  }))\n];\n\nreturn [{\n  json: {\n    sheetId,\n    body: JSON.stringify({ requests })\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7808,
+        1648
+      ],
+      "id": "f888c490-1134-4a8e-bf1a-f9d2daecf3f2",
+      "name": "Build Sheet Update"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://sheets.googleapis.com/v4/spreadsheets/1SLnqd-RfXCUqPpKOXe6pq0kkUmlXHBbtV1ss6xHIjzE:batchUpdate",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{ \"Content-Type\": \"application/json\" }",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.body }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        8016,
+        1648
+      ],
+      "id": "20bdfad0-043d-4c00-89bd-a40a7780d39e",
+      "name": "HTTP Request3",
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "zYEppCmQjVtSppDL",
+          "name": "Google account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "d6454c77-ad4d-49b6-8401-6461198b4537",
+              "leftValue": "={{ $json.skipAgent }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        5920,
+        1648
+      ],
+      "id": "24392172-5d15-4f24-928e-d462fb040677",
+      "name": "If (Skip Agent?)"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ── Extract Webhook + Build Sheet Title ─────────────────────────\nconst raw = $('Webhook3').first().json;\nconst body = raw?.body?.body || raw?.body?.[0]?.body || raw?.body || raw;\n\nconst fullName = body.full_name || body.name || 'Unknown';\nconst contactId = body.contact_id || '';\n\nconst dobRaw = body.date_of_birth;\nconst dob = (dobRaw && dobRaw !== 'null')\n  ? (() => {\n      const [year, month, day] = dobRaw.split('T')[0].split('-');\n      return `${month}/${day}/${year}`;\n    })()\n  : '';\n\nconst procedure = body['CONSENT TO READ:']\n  || body.proccedure\n  || body.procedure\n  || '';\n\nconst dateOfSurgery = body['Requested Date for surgery (Approximate)']\n  || body['Date Of Surgery?']\n  || body['Which Hospital/ Date Of Surgery']\n  || '';\n\nconst insurance = body['Insurance Provider Name']\n  || body['Primary Insurance']\n  || body['Insurance Company:']\n  || 'Nil';\n\nconst dateOfSubmission = new Date().toLocaleDateString('en-US', {\n  month: '2-digit', day: '2-digit', year: 'numeric'\n});\n\nconst sheetTitle = `${fullName} ${contactId}`.trim();\n\n// ── Predefined CPT code sets for exact-match procedures ──────────\nconst PREDEFINED_CODES = {\n  angiogram: [\n    '36245', '36246', '36247', '36248', '37184', '37252', '37253', '37254',\n    '37255', '37256', '37257', '37258', '37259', '37260', '37261', '37263',\n    '37265', '37267', '37269', '37271', '37273', '37275', '37277', '37280',\n    '37281', '37282', '37283', '37284', '37285', '37286', '37287', '37288',\n    '37289', '37290', '37291', '37292', '37293', '37294', '37295', '75625',\n    '75710', '75716', '76937', '99152', '99153'\n  ],\n  gsv: ['36475', '76937'],\n  fistulagram: [\n    '36901', '36902', '36903', '36904', '36905', '36906', '36907', '36908',\n    '36909', '36215', '75827', '36010'\n  ]\n};\n\n// ── Check for exact-match keyword in procedure text ──────────────\nconst procedureLower = procedure.toLowerCase();\nlet predefinedCptCodes = null;\n\nif (procedureLower.includes('angiogram')) {\n  predefinedCptCodes = PREDEFINED_CODES.angiogram;\n} else if (procedureLower.includes('gsv')) {\n  predefinedCptCodes = PREDEFINED_CODES.gsv;\n} else if (procedureLower.includes('fistulagram')) {\n  predefinedCptCodes = PREDEFINED_CODES.fistulagram;\n}\n\nreturn [{\n  json: {\n    fullName, contactId, dob, procedure,\n    dateOfSurgery, insurance, dateOfSubmission, sheetTitle,\n    predefinedCptCodes,          // null if no match, otherwise an array\n    skipAgent: predefinedCptCodes !== null\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5712,
+        1648
+      ],
+      "id": "f7f0a5eb-9cb4-4e4a-9377-338fcf3c6a34",
+      "name": "Extract Webhook1"
+    }
+  ],
+  "pinData": {
+    "Create sheet2": [
+      {
+        "json": {
+          "spreadsheetId": "11ECt2N1CMn0id9LyAyd1UjrDaeeworgL-1_Lk496LT4",
+          "sheetId": 1131228194,
+          "title": "AAX TTAGG - lamY6Xl8mONXXStFWawq",
+          "index": 4,
+          "sheetType": "GRID",
+          "gridProperties": {
+            "rowCount": 1000,
+            "columnCount": 26
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Append row in sheet2": [
+      {
+        "json": {
+          "name": "AAX TTAGG",
+          "Date of Birth": "2026-02-07T00:00:00.000Z",
+          "Date of Surgery": null,
+          "Consent To Read": "fistulagram",
+          "Code 36901": "New",
+          "Code 36902": "New",
+          "Code 36903": "New",
+          "Code 36904": "New",
+          "Code 36905": "New",
+          "Code 36906": "New",
+          "Code 36907": "New",
+          "Code 36908": "New",
+          "Code 36909": "New",
+          "Code 36215": "New",
+          "Code 75827": "New",
+          "Code 36010": "New"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Webhook - Fistulagram": [
+      {
+        "json": {
+          "headers": {
+            "host": "axias.app.n8n.cloud",
+            "user-agent": "PostmanRuntime/7.54.0",
+            "content-length": "16654",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "cache-control": "no-cache",
+            "cdn-loop": "cloudflare; loops=1; subreqs=1",
+            "cf-connecting-ip": "54.86.50.139",
+            "cf-ew-via": "15",
+            "cf-ipcountry": "US",
+            "cf-ray": "a0304abf6b865974-IAD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-worker": "n8n.cloud",
+            "content-type": "application/json",
+            "postman-token": "969b0614-f049-4e53-948a-ad985cd99596",
+            "x-forwarded-for": "54.86.50.139, 172.70.35.203",
+            "x-forwarded-host": "axias.app.n8n.cloud",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik-prod-users-gwc-68-7c7c9cfb8b-wqcpb",
+            "x-is-trusted": "yes",
+            "x-real-ip": "54.86.50.139"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Joint Pain and Inflammation": "",
+            "Does the patient have a proxy/family member in charge? ": "",
+            "Name of Secondary Insurance": "",
+            "Additional Instructions": "",
+            "Botox Injections": "",
+            "Instagram Username": "",
+            "Skip OTP Phone verification?": "",
+            "Treatment for Rheumatic Diseases": "",
+            "Address": "",
+            "Hormone Replacement Therapy": "",
+            "Do you have Medical/Health insurance?": "",
+            "CONSENT TO READ:": "fistulagram",
+            "If patient had surgery with one of our providers, what surgery?  What's approximate date?": "",
+            "Veins and Varicosities": "",
+            "What services is the patient interested in?": "",
+            "Does patient have an attorney?": "",
+            "Insurance Provider Name": "",
+            "Sexual Health": "",
+            "Diagnostic Services": "",
+            "If yes, please share your experience.": "",
+            "Specialty 2": "",
+            "Did Patient have surgery by provider?": "",
+            "Proxy/Family Member Name": "",
+            "Effortless Weight Loss & Peptides": "",
+            "What Hospital/Facility is patent being discharged from?": "",
+            "RSVP YOUR ATTENDANCE ": "",
+            "Additional notes": "",
+            "RSVP": "",
+            "field11": "",
+            "Is Patient On Dialysis or Referred to us for new dialysis access?": "",
+            "Feminizing Hormone Therapy": "",
+            "Department": "",
+            "Recipients": "",
+            "Pertinent information?": "",
+            "Did the patient have surgery in the hospital with our providers?": "",
+            "Referral Reason?": "",
+            "PCP/Clinic Name and Contact phone number:": "",
+            "Witness A": "",
+            "Does patient have Secondary Insurance?": "",
+            "Relationship": "",
+            "Which services are you requesting?": "",
+            "Date Signed": "",
+            "Options": "",
+            "Which provider would you like to see": "",
+            "ICD10 CODES:": "",
+            "Does the Patient Require Medical Clearance?": "Yes",
+            "Pediatric Podiatry": "",
+            "IV Infusions": "",
+            "Upload Patient Demographics and any Medical Records ": "",
+            "Requested Date for surgery (Approximate)": "Trokk",
+            "Is Patient on Dialysis Or Need Dialysis Access?": "",
+            "Event Date": "",
+            "Date of hospital admission": "",
+            "Street Adress": "",
+            "Date of Referral": "",
+            "Will you be attending the party?": "",
+            "Body Composition and Monitoring": "",
+            "REFERRING SOURCE": "",
+            "Do you have any specific fitness challenges or limitations we should be aware of?": "",
+            "Primary Member ID": "",
+            "PRP (Platelet-Rich Plasma)": "",
+            "I authorize the following person(s) to consent to treatment for the above identified minor.  The person below MUST present identification at the time of the visit.": "",
+            "Type of Anesthesia:": "General Anesthesia",
+            "Bioidentical Hormone Replacement Therapy (BHRT)": "",
+            "Lip Enhancement and Contouring": "",
+            "Donor's Personal Information": "",
+            "What is your preferred membership duration?": "",
+            "Medicare ID Number": "",
+            "Witness' Name": "",
+            "Who is taking this call?": "",
+            "Date": "",
+            "Providers Name": "",
+            "Upload Patient ID Card (Driver License or Gvt ID)": "",
+            "Adrenal Hormone Replacement Therapy": "",
+            "Does Patient have an Adjuster?": "",
+            "Wound 1 Dimension": "",
+            "Street Address": "",
+            "Phone #": "",
+            "Filler & Botox Injections": "",
+            "Signature ": "",
+            "RSVP YOUR ATTENDANCE Dec 21, 2024": "",
+            "Which One Of Our Vascular Surgeons Was This Patient Seen By In The Hospital?": "",
+            "Stem Cell Therapy": "",
+            "recertification date": "",
+            "Witness B": "",
+            "Does the Patient Have any open wounds?": "",
+            "List of allergies": "eppp",
+            "Pre-OP Labs Requested:": [],
+            "Wound 2 Dimension": "",
+            "Print Name": "",
+            "Which Hospital?": "",
+            "Social Security Number": "",
+            "Witness' Information": "",
+            "I DONATE:": "",
+            "Insurance Group #": "",
+            "Estrogen Therapy": "",
+            "Specialty 4": "",
+            "Name of Organs or Parts": "",
+            "PCP/Clinic Phone number": "",
+            "Are you interested in a specific type of membership?": "",
+            "Donor's Date of Birth": "",
+            "Wound 4 Dimension": "",
+            "Reason for visit:": "",
+            "Adjuster/Case Manager Phone number": "",
+            "Attorney/Firm Phone #": "",
+            "Have you been a member of a gym before?": "",
+            "Notes for contacting patient or caretaker for scheduling:": "",
+            "ALF/ILF": "",
+            "Attorney Information": "",
+            "South Florida MultiSpecialty Medical Group will ONLY provide the following procedures or services to the minor:": "",
+            "Contact Information": "",
+            "Add Comments": "",
+            "Secondary Insurance ": "",
+            "Food Preference Plus 1": "",
+            "General Care": "",
+            "Open Surgical Procedures": "",
+            "Message": "",
+            "Testosterone Replacement Therapy (TRT)": "",
+            "Upload Insurance card Images": "",
+            "Additional information": "",
+            "Wound Care and Limb Preservation": "",
+            "I  will give:": "",
+            "Medical Services Requested?": "",
+            "Was patient seen in hospital by provider?": "",
+            "Surgical Facility": "SFMSMG OBL",
+            "Reason for appointment?": "",
+            "NOTES OR PREFERENCE": "Lppl",
+            "What kind of discomfort are you experiencing?": "",
+            "Created": "",
+            "Hormone Replacement Therapy for Men": "",
+            "Adjuster Phone # or email": "",
+            "Sports and Performance-Related Care": "",
+            "Medicaid ID ": "",
+            "Wound 5 Dimension": "",
+            "How many wounds does the patient have": "",
+            "Provide pertinent details about the patient (free text)": "",
+            "Hormonal Optimization for Men": "",
+            "Are you interested in personal training services?": "",
+            "Join Pain and Inflammation": "",
+            "Advanced Therapies for Weight Loss": "",
+            "Is this a Legal/MVA/PI/WorkComp Injury": "",
+            "Power of Attorney Name:": "",
+            "Text box": "",
+            "Specialized Therapies": "",
+            "End of the year calendar": "",
+            "Did patient have surgery?": "",
+            "Filler and Botox Injection": "",
+            "Mental Health": "",
+            "Insurance Policy Number": "",
+            "Date referral received": "",
+            "Advanced Techniques": "",
+            "Which doctor is the appointment is being requested for?": "",
+            "Skip phone verification?": "",
+            "Pre-Operative Medication:": "gruui",
+            "Diagnosis and Evaluation": "",
+            "Age": "",
+            "Food Preference Guest ": "",
+            "Shockwave Therapy": "",
+            "What is your gender?": "",
+            "Chronic Pain Management": "",
+            "Select you food": "",
+            "Pertinent Details": "",
+            "I give:": "",
+            "Donor's information": "",
+            "Wellness ": "",
+            "Limitations or special wishes, if any": "",
+            "How Did You Hear About Us?": "",
+            "City/State": "",
+            "Name of the Witness": "",
+            "What are your primary fitness goals? ": "",
+            "Was this patient previously seen by one of the doctors?": "",
+            "is this a MVA/PI/WorkComp Injury?": "",
+            "Other Phone Number": "",
+            "Submission Details": "",
+            "Reason for Referral": "",
+            "Zip Code": "",
+            "if any:": "",
+            "Preferred Contact Method:": "",
+            "Podiatry": "",
+            "Vascular Surgery": "",
+            "How will you be attending?": "",
+            "Which Specialty would you like to book with?": "",
+            "Medicare ID#": "",
+            "CPT CODES:": "",
+            "Date of Birth": "",
+            "Medical Weight Loss Programs": "",
+            "Upload Insurance card": "",
+            "Driver’s License #": "",
+            "Which Of Our Service(s) Are You Interested In?": "",
+            "If seen in hospital,  Which hospital, and Approximate date?": "",
+            "Surgeon": "Dr. Peter Hanna",
+            "Referred by:": "",
+            "Pertinent details about the patient ": "",
+            "Does patient have an Adjuster or Case manager?": "",
+            "Upload Patient Identification (Driver License or Gvt ID)": "",
+            "Material/instruments requested": "Gra",
+            "Primary Care": "",
+            "Insurance Company:": "",
+            "Business Name": "",
+            "Date Of Surgery?": "",
+            "CPT CODEX": "",
+            "PLEASE TYPE YOUR NAME BELOW": "",
+            "I am intersted in": "",
+            "Last Activity": "",
+            "Secondary Member ID": "",
+            "Facial Volume Restoration": "",
+            "Do you have Health Insurance": "",
+            "Secondary insurance Policy Number": "",
+            "Which Provider to schedule?": "",
+            "Did this patient receive surgery by one of our vascular surgeons while in the hospital? (Dr. Paul/Price)": "",
+            "Account Number": "",
+            "Medical reconciliation": "",
+            "Priority Level": "",
+            "Patient Relationship": "",
+            "Claim number:": "",
+            "ALLERGIES:": "YES",
+            "Does the patient have a proxy/family member to contact?": "",
+            "Progesterone Therapy": "",
+            "Medicaid ID Number:": "",
+            "First Name of Plus 1": "",
+            "Birth Date": "",
+            "Does the patient have wounds?": "",
+            "Also,": "",
+            "City and State": "",
+            "Facial Wrinkle Treatment": "",
+            "Minor's 18th Birthday": "",
+            "Vascular": "",
+            "Which Hospital/ Date Of Surgery": "",
+            "Peptide Therapy for Weight Loss": "",
+            "Upload Facesheet ": "",
+            "Proxy/Family Member Phone Number": "",
+            "Pre-Operative Testing": "",
+            ".": "",
+            "Treatment for Menopausal and Perimenopausal Symptoms": "",
+            "NOTES:": "",
+            "Witness": "",
+            "Upload facesheet image": "",
+            "Thyroid Hormone Replacement Therapy": "",
+            "Limitations or special wishes, if any:": "",
+            "Parent/Legal Guardian Signature": "",
+            "Relationships": "",
+            "Management of Venous Disorders": "",
+            "Insurance Verified": "",
+            "Upload Patient ID (Driver License or Gvt ID)": "",
+            "Dermal Fillers": "",
+            "Upload Patient Demographics and Medical Records ": "",
+            "Upload Image of Demographic": "",
+            "Doctor Appointment Request": "",
+            "Men's Health": "",
+            "Parent/Legal Guardian’s Information": "",
+            "Donor's Signature": "",
+            "Name of PCP/Clinic": "",
+            "Name of organs or parts": "",
+            "Masculinizing Hormone Therapy": "",
+            "Which doctor saw this patient in the hospital?": "",
+            "Is the patient a diabetic?": "",
+            "Primary Insurance": "",
+            "Insurance Policy#/MemberID#": "",
+            "Post-Menopausal Bone Health Support": "",
+            "Insurance phone number:": "",
+            "Minimally Invasive Treatments": "",
+            "Who refererred this patient? ": "",
+            "Do you have a claim number?": "",
+            "Single Dropdown 6y3p": "",
+            "Patient's Signature": "",
+            "What type of workouts do you enjoy? (Check all that apply)": "",
+            "Please upload Image of Demographic": "",
+            "Concierge Medical Care": "",
+            "Medical Service Requested?": "",
+            "Declaration made this ____day of________________,202___, I, _________________________, willfully and voluntarily make known my desire that my dying not be artificially prolonged under the circumstances set forth below,": "",
+            "Checkbox 8vuu": "",
+            "Preferred Appointment Date:": "",
+            "Gender-Affirming Hormone Therapy": "",
+            "Appointment Date": "",
+            "General Medical Care": "",
+            "Specialty 3": "",
+            "Other (specify):": "",
+            "Specialty 1": "",
+            "Wound 3 Dimension": "",
+            "Hormone Replacement Therapy for Women": "",
+            "E.D Help": "",
+            "Does the patient have a proxy/family member in charge? (if Yes, Add their contact information)": "",
+            "Note: Each invitee may bring only one guest.": "",
+            "Supportive Services": "",
+            "Date of Accident/Injury": "",
+            "Relationship To Patient": "",
+            "Multi Dropdown 16da0": "",
+            "Treatment for Symptoms of Low Testosterone": "",
+            "Rheumatology": "",
+            "Does the patient have a secondary insurance?": "",
+            "Provide pertinent information about the patient (free text)": "",
+            "Was Patient seen by one of our vascular surgeon before? (Office/Hospital)": "",
+            "Will you be attending the event?": "",
+            "Choose a time slot:": "",
+            "Women's Health": "",
+            "I Donate:": "",
+            "Primary Caretacker/Family Member": "",
+            "Upload Insurance cards": "",
+            "Test": "",
+            "Driver's License #": "",
+            "Pick  a Date": "",
+            "Report Title": "",
+            "Who is submitting this form?": "TT TTT",
+            "Last Name of Plus 1": "",
+            "Preferred Appointment Time:": "",
+            "Your Message To Us": "",
+            "contact_id": "lamY6Xl8mONXXStFWawq",
+            "first_name": "lpppoppp",
+            "last_name": "ttt",
+            "full_name": "lpppoppp ttt",
+            "phone": "+13055207492",
+            "tags": "",
+            "country": "US",
+            "timezone": "America/New_York",
+            "date_created": "2026-04-29T15:31:19.497Z",
+            "date_of_birth": "2026-05-01T00:00:00.000Z",
+            "contact_source": "TEST: SURGERY SCHEDULING FORM",
+            "full_address": "",
+            "contact_type": "lead",
+            "location": {
+              "name": "South Florida Multispecialty Medical Group",
+              "address": "8950 sw 74th Ct Suite 1408",
+              "city": "Miami",
+              "state": "FL",
+              "country": "US",
+              "postalCode": "33156",
+              "fullAddress": "8950 sw 74th Ct Suite 1408, Miami FL 33156",
+              "id": "IMTqpXc8Dahe5ZWfkefu"
+            },
+            "user": {
+              "firstName": "Biyi",
+              "lastName": "Anjorin",
+              "email": "biyi@sflmedicalgroup.com",
+              "phone": "+17866925252"
+            },
+            "workflow": {
+              "id": "2a4118c5-ddb2-465c-9689-df912dc62584",
+              "name": "GPT - CPT Code"
+            },
+            "triggerData": {},
+            "contact": {
+              "attributionSource": {
+                "sessionSource": "Referral",
+                "url": "https://api.leadconnectorhq.com/widget/form/UtRYwKYh0FKcvoYFxA3d?notrack=true",
+                "utmSource": null,
+                "utmMedium": null,
+                "utmContent": null,
+                "utmTerm": null,
+                "utmKeyword": null,
+                "utmMatchtype": null,
+                "referrer": "https://leadgen-apps-form-survey-builder.leadconnectorhq.com",
+                "gclid": null,
+                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+                "ip": "105.127.8.108",
+                "gaClientId": "GA1.1.115757587.1739859104",
+                "gaSessionId": null,
+                "medium": "form",
+                "mediumId": "UtRYwKYh0FKcvoYFxA3d",
+                "adName": null,
+                "adGroupId": null,
+                "adId": null,
+                "gbraid": null,
+                "wbraid": null
+              },
+              "lastAttributionSource": {
+                "adName": null,
+                "sessionSource": "Direct traffic",
+                "utmSource": null,
+                "url": "https://link.apisystem.tech/widget/form/UtRYwKYh0FKcvoYFxA3d",
+                "ip": "105.127.6.235",
+                "utmContent": null,
+                "gaSessionId": null,
+                "gaClientId": null,
+                "utmTerm": null,
+                "referrer": null,
+                "wbraid": null,
+                "gbraid": null,
+                "utmKeyword": null,
+                "adGroupId": null,
+                "utmMatchtype": null,
+                "mediumId": "UtRYwKYh0FKcvoYFxA3d",
+                "medium": "form",
+                "utmMedium": null,
+                "adId": null,
+                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+                "gclid": null
+              }
+            },
+            "attributionSource": {
+              "sessionSource": "Direct traffic",
+              "url": "https://link.apisystem.tech/widget/form/UtRYwKYh0FKcvoYFxA3d",
+              "utmSource": null,
+              "utmMedium": null,
+              "utmContent": null,
+              "utmTerm": null,
+              "utmKeyword": null,
+              "utmMatchtype": null,
+              "referrer": null,
+              "gclid": null,
+              "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+              "ip": "105.127.6.235",
+              "gaClientId": null,
+              "gaSessionId": null,
+              "medium": "form",
+              "mediumId": "UtRYwKYh0FKcvoYFxA3d",
+              "adName": null,
+              "adGroupId": null,
+              "adId": null,
+              "gbraid": null,
+              "wbraid": null
+            },
+            "customData": {}
+          },
+          "webhookUrl": "https://axias.app.n8n.cloud/webhook-test/3b34de39-8091-48c5-9f5d-254d7f59a18a",
+          "executionMode": "test"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Webhook2": [
+      {
+        "json": {
+          "headers": {
+            "host": "axias.app.n8n.cloud",
+            "user-agent": "axios/1.13.2",
+            "content-length": "12720",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare; loops=1; subreqs=1",
+            "cf-connecting-ip": "34.136.23.36",
+            "cf-ew-via": "15",
+            "cf-ipcountry": "US",
+            "cf-ray": "a0c28ae20eb9da7a-ORD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-worker": "n8n.cloud",
+            "content-type": "application/json",
+            "traceparent": "00-b1cdaa73317aa6dfb3eade66f33784e3-90b74bf24125d3ff-00",
+            "x-forwarded-for": "34.136.23.36, 172.69.17.113",
+            "x-forwarded-host": "axias.app.n8n.cloud",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik-prod-users-gwc-68-7c7c9cfb8b-wqcpb",
+            "x-is-trusted": "yes",
+            "x-real-ip": "34.136.23.36"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Joint Pain and Inflammation": "",
+            "Does the patient have a proxy/family member in charge? ": "",
+            "Name of Secondary Insurance": "",
+            "Additional Instructions": "",
+            "Botox Injections": "",
+            "Instagram Username": "",
+            "Skip OTP Phone verification?": "",
+            "Treatment for Rheumatic Diseases": "",
+            "Address": "",
+            "Hormone Replacement Therapy": "",
+            "Do you have Medical/Health insurance?": "",
+            "CONSENT TO READ:": "respiratory system",
+            "If patient had surgery with one of our providers, what surgery?  What's approximate date?": "",
+            "Veins and Varicosities": "",
+            "What services is the patient interested in?": "",
+            "Does patient have an attorney?": "",
+            "Insurance Provider Name": "",
+            "Sexual Health": "",
+            "Diagnostic Services": "",
+            "If yes, please share your experience.": "",
+            "Specialty 2": "",
+            "Did Patient have surgery by provider?": "",
+            "Proxy/Family Member Name": "",
+            "Effortless Weight Loss & Peptides": "",
+            "What Hospital/Facility is patent being discharged from?": "",
+            "RSVP YOUR ATTENDANCE ": "",
+            "Additional notes": "",
+            "RSVP": "",
+            "field11": "",
+            "Is Patient On Dialysis or Referred to us for new dialysis access?": "",
+            "Feminizing Hormone Therapy": "",
+            "Department": "",
+            "Recipients": "",
+            "Pertinent information?": "",
+            "Did the patient have surgery in the hospital with our providers?": "",
+            "Referral Reason?": "",
+            "PCP/Clinic Name and Contact phone number:": "",
+            "Witness A": "",
+            "Does patient have Secondary Insurance?": "",
+            "Relationship": "",
+            "Which services are you requesting?": "",
+            "Date Signed": "",
+            "Options": "",
+            "Which provider would you like to see": "",
+            "ICD10 CODES:": "",
+            "Does the Patient Require Medical Clearance?": "Yes",
+            "Pediatric Podiatry": "",
+            "IV Infusions": "",
+            "Upload Patient Demographics and any Medical Records ": "",
+            "Requested Date for surgery (Approximate)": "1/10/2026",
+            "Is Patient on Dialysis Or Need Dialysis Access?": "",
+            "Event Date": "",
+            "Date of hospital admission": "",
+            "Street Adress": "",
+            "Date of Referral": "",
+            "Will you be attending the party?": "",
+            "Body Composition and Monitoring": "",
+            "REFERRING SOURCE": "",
+            "Do you have any specific fitness challenges or limitations we should be aware of?": "",
+            "Primary Member ID": "",
+            "PRP (Platelet-Rich Plasma)": "",
+            "I authorize the following person(s) to consent to treatment for the above identified minor.  The person below MUST present identification at the time of the visit.": "",
+            "Type of Anesthesia:": "General Anesthesia",
+            "Bioidentical Hormone Replacement Therapy (BHRT)": "",
+            "Lip Enhancement and Contouring": "",
+            "Donor's Personal Information": "",
+            "What is your preferred membership duration?": "",
+            "Medicare ID Number": "",
+            "Witness' Name": "",
+            "Who is taking this call?": "",
+            "Date": "",
+            "Providers Name": "",
+            "Upload Patient ID Card (Driver License or Gvt ID)": "",
+            "Adrenal Hormone Replacement Therapy": "",
+            "Does Patient have an Adjuster?": "",
+            "Wound 1 Dimension": "",
+            "Street Address": "",
+            "Phone #": "",
+            "Filler & Botox Injections": "",
+            "Signature ": "",
+            "RSVP YOUR ATTENDANCE Dec 21, 2024": "",
+            "Which One Of Our Vascular Surgeons Was This Patient Seen By In The Hospital?": "",
+            "Stem Cell Therapy": "",
+            "recertification date": "",
+            "Witness B": "",
+            "Does the Patient Have any open wounds?": "",
+            "List of allergies": "eppp",
+            "Pre-OP Labs Requested:": [],
+            "Wound 2 Dimension": "",
+            "Print Name": "",
+            "Which Hospital?": "",
+            "Social Security Number": "",
+            "Witness' Information": "",
+            "I DONATE:": "",
+            "Insurance Group #": "",
+            "Estrogen Therapy": "",
+            "Specialty 4": "",
+            "Name of Organs or Parts": "",
+            "PCP/Clinic Phone number": "",
+            "Are you interested in a specific type of membership?": "",
+            "Donor's Date of Birth": "",
+            "Wound 4 Dimension": "",
+            "Reason for visit:": "",
+            "Adjuster/Case Manager Phone number": "",
+            "Attorney/Firm Phone #": "",
+            "Have you been a member of a gym before?": "",
+            "Notes for contacting patient or caretaker for scheduling:": "",
+            "ALF/ILF": "",
+            "Attorney Information": "",
+            "South Florida MultiSpecialty Medical Group will ONLY provide the following procedures or services to the minor:": "",
+            "Contact Information": "",
+            "Add Comments": "",
+            "Secondary Insurance ": "",
+            "Food Preference Plus 1": "",
+            "General Care": "",
+            "Open Surgical Procedures": "",
+            "Message": "",
+            "Testosterone Replacement Therapy (TRT)": "",
+            "Upload Insurance card Images": "",
+            "Additional information": "",
+            "Wound Care and Limb Preservation": "",
+            "I  will give:": "",
+            "Medical Services Requested?": "",
+            "Was patient seen in hospital by provider?": "",
+            "Surgical Facility": "SFMSMG OBL",
+            "Reason for appointment?": "",
+            "NOTES OR PREFERENCE": "Lppl",
+            "What kind of discomfort are you experiencing?": "",
+            "Created": "",
+            "Hormone Replacement Therapy for Men": "",
+            "Adjuster Phone # or email": "",
+            "Sports and Performance-Related Care": "",
+            "Medicaid ID ": "",
+            "Wound 5 Dimension": "",
+            "How many wounds does the patient have": "",
+            "Provide pertinent details about the patient (free text)": "",
+            "Hormonal Optimization for Men": "",
+            "Are you interested in personal training services?": "",
+            "Join Pain and Inflammation": "",
+            "Advanced Therapies for Weight Loss": "",
+            "Is this a Legal/MVA/PI/WorkComp Injury": "",
+            "Power of Attorney Name:": "",
+            "Text box": "",
+            "Specialized Therapies": "",
+            "End of the year calendar": "",
+            "Did patient have surgery?": "",
+            "Filler and Botox Injection": "",
+            "Mental Health": "",
+            "Insurance Policy Number": "",
+            "Date referral received": "",
+            "Advanced Techniques": "",
+            "Which doctor is the appointment is being requested for?": "",
+            "Skip phone verification?": "",
+            "Pre-Operative Medication:": "gruui",
+            "Diagnosis and Evaluation": "",
+            "Age": "",
+            "Food Preference Guest ": "",
+            "Shockwave Therapy": "",
+            "What is your gender?": "",
+            "Chronic Pain Management": "",
+            "Select you food": "",
+            "Pertinent Details": "",
+            "I give:": "",
+            "Donor's information": "",
+            "Wellness ": "",
+            "Limitations or special wishes, if any": "",
+            "How Did You Hear About Us?": "",
+            "City/State": "",
+            "Name of the Witness": "",
+            "What are your primary fitness goals? ": "",
+            "Was this patient previously seen by one of the doctors?": "",
+            "is this a MVA/PI/WorkComp Injury?": "",
+            "Other Phone Number": "",
+            "Submission Details": "",
+            "Reason for Referral": "",
+            "Zip Code": "",
+            "if any:": "",
+            "Preferred Contact Method:": "",
+            "Podiatry": "",
+            "Vascular Surgery": "",
+            "How will you be attending?": "",
+            "Which Specialty would you like to book with?": "",
+            "Medicare ID#": "",
+            "CPT CODES:": "",
+            "Date of Birth": "",
+            "Medical Weight Loss Programs": "",
+            "Upload Insurance card": "",
+            "Driver’s License #": "",
+            "Which Of Our Service(s) Are You Interested In?": "",
+            "If seen in hospital,  Which hospital, and Approximate date?": "",
+            "Surgeon": "Dr. Peter Hanna",
+            "Referred by:": "",
+            "Pertinent details about the patient ": "",
+            "Does patient have an Adjuster or Case manager?": "",
+            "Upload Patient Identification (Driver License or Gvt ID)": "",
+            "Material/instruments requested": "Gra",
+            "Primary Care": "",
+            "Insurance Company:": "",
+            "Business Name": "",
+            "Date Of Surgery?": "",
+            "CPT CODEX": "",
+            "PLEASE TYPE YOUR NAME BELOW": "",
+            "I am intersted in": "",
+            "Last Activity": "",
+            "Secondary Member ID": "",
+            "Facial Volume Restoration": "",
+            "Do you have Health Insurance": "",
+            "Secondary insurance Policy Number": "",
+            "Which Provider to schedule?": "",
+            "Did this patient receive surgery by one of our vascular surgeons while in the hospital? (Dr. Paul/Price)": "",
+            "Account Number": "",
+            "Medical reconciliation": "",
+            "Priority Level": "",
+            "Patient Relationship": "",
+            "Claim number:": "",
+            "ALLERGIES:": "YES",
+            "Does the patient have a proxy/family member to contact?": "",
+            "Progesterone Therapy": "",
+            "Medicaid ID Number:": "",
+            "First Name of Plus 1": "",
+            "Birth Date": "",
+            "Does the patient have wounds?": "",
+            "Also,": "",
+            "City and State": "",
+            "Facial Wrinkle Treatment": "",
+            "Minor's 18th Birthday": "",
+            "Vascular": "",
+            "Which Hospital/ Date Of Surgery": "",
+            "Peptide Therapy for Weight Loss": "",
+            "Upload Facesheet ": "",
+            "Proxy/Family Member Phone Number": "",
+            "Pre-Operative Testing": "",
+            ".": "",
+            "Treatment for Menopausal and Perimenopausal Symptoms": "",
+            "NOTES:": "",
+            "Witness": "",
+            "Upload facesheet image": "",
+            "Thyroid Hormone Replacement Therapy": "",
+            "Limitations or special wishes, if any:": "",
+            "Parent/Legal Guardian Signature": "",
+            "Relationships": "",
+            "Management of Venous Disorders": "",
+            "Insurance Verified": "",
+            "Upload Patient ID (Driver License or Gvt ID)": "",
+            "Dermal Fillers": "",
+            "Upload Patient Demographics and Medical Records ": "",
+            "Upload Image of Demographic": "",
+            "Doctor Appointment Request": "",
+            "Men's Health": "",
+            "Parent/Legal Guardian’s Information": "",
+            "Donor's Signature": "",
+            "Name of PCP/Clinic": "",
+            "Name of organs or parts": "",
+            "Masculinizing Hormone Therapy": "",
+            "Which doctor saw this patient in the hospital?": "",
+            "Is the patient a diabetic?": "",
+            "Primary Insurance": "",
+            "Insurance Policy#/MemberID#": "",
+            "Post-Menopausal Bone Health Support": "",
+            "Insurance phone number:": "",
+            "Minimally Invasive Treatments": "",
+            "Who refererred this patient? ": "",
+            "Do you have a claim number?": "",
+            "Single Dropdown 6y3p": "",
+            "Patient's Signature": "",
+            "What type of workouts do you enjoy? (Check all that apply)": "",
+            "Please upload Image of Demographic": "",
+            "Concierge Medical Care": "",
+            "Medical Service Requested?": "",
+            "Declaration made this ____day of________________,202___, I, _________________________, willfully and voluntarily make known my desire that my dying not be artificially prolonged under the circumstances set forth below,": "",
+            "Checkbox 8vuu": "",
+            "Preferred Appointment Date:": "",
+            "Gender-Affirming Hormone Therapy": "",
+            "Appointment Date": "",
+            "General Medical Care": "",
+            "Specialty 3": "",
+            "Other (specify):": "",
+            "Specialty 1": "",
+            "Wound 3 Dimension": "",
+            "Hormone Replacement Therapy for Women": "",
+            "E.D Help": "",
+            "Does the patient have a proxy/family member in charge? (if Yes, Add their contact information)": "",
+            "Note: Each invitee may bring only one guest.": "",
+            "Supportive Services": "",
+            "Date of Accident/Injury": "",
+            "Relationship To Patient": "",
+            "Multi Dropdown 16da0": "",
+            "Treatment for Symptoms of Low Testosterone": "",
+            "Rheumatology": "",
+            "Does the patient have a secondary insurance?": "",
+            "Provide pertinent information about the patient (free text)": "",
+            "Was Patient seen by one of our vascular surgeon before? (Office/Hospital)": "",
+            "Will you be attending the event?": "",
+            "Choose a time slot:": "",
+            "Women's Health": "",
+            "I Donate:": "",
+            "Primary Caretacker/Family Member": "",
+            "Upload Insurance cards": "",
+            "Test": "",
+            "Driver's License #": "",
+            "Pick  a Date": "",
+            "Report Title": "",
+            "Who is submitting this form?": "Tarig Test",
+            "Last Name of Plus 1": "",
+            "Preferred Appointment Time:": "",
+            "Your Message To Us": "",
+            "contact_id": "lamY6Xl8mONXXStFWawq",
+            "first_name": "Lookmn",
+            "last_name": "Testtyy",
+            "full_name": "Lookmn Testtyy",
+            "phone": "+13055207492",
+            "tags": "",
+            "country": "US",
+            "timezone": "America/New_York",
+            "date_created": "2026-04-29T15:31:19.497Z",
+            "date_of_birth": "2026-06-01T00:00:00.000Z",
+            "contact_source": "TEST: SURGERY SCHEDULING FORM",
+            "full_address": "",
+            "contact_type": "lead",
+            "location": {
+              "name": "South Florida Multispecialty Medical Group",
+              "address": "8950 sw 74th Ct Suite 1408",
+              "city": "Miami",
+              "state": "FL",
+              "country": "US",
+              "postalCode": "33156",
+              "fullAddress": "8950 sw 74th Ct Suite 1408, Miami FL 33156",
+              "id": "IMTqpXc8Dahe5ZWfkefu"
+            },
+            "user": {
+              "firstName": "Biyi",
+              "lastName": "Anjorin",
+              "email": "biyi@sflmedicalgroup.com",
+              "phone": "+17866925252"
+            },
+            "workflow": {
+              "id": "2a4118c5-ddb2-465c-9689-df912dc62584",
+              "name": "GPT - CPT Code"
+            },
+            "triggerData": {},
+            "contact": {
+              "attributionSource": {
+                "sessionSource": "Referral",
+                "url": "https://api.leadconnectorhq.com/widget/form/UtRYwKYh0FKcvoYFxA3d?notrack=true",
+                "utmSource": null,
+                "utmMedium": null,
+                "utmContent": null,
+                "utmTerm": null,
+                "utmKeyword": null,
+                "utmMatchtype": null,
+                "referrer": "https://leadgen-apps-form-survey-builder.leadconnectorhq.com",
+                "gclid": null,
+                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+                "ip": "105.127.8.108",
+                "gaClientId": "GA1.1.115757587.1739859104",
+                "gaSessionId": null,
+                "medium": "form",
+                "mediumId": "UtRYwKYh0FKcvoYFxA3d",
+                "adName": null,
+                "adGroupId": null,
+                "adId": null,
+                "gbraid": null,
+                "wbraid": null
+              },
+              "lastAttributionSource": {
+                "sessionSource": "Direct traffic",
+                "url": "https://link.apisystem.tech/widget/form/UtRYwKYh0FKcvoYFxA3d",
+                "utmSource": null,
+                "utmMedium": null,
+                "utmContent": null,
+                "utmTerm": null,
+                "utmKeyword": null,
+                "utmMatchtype": null,
+                "referrer": null,
+                "gclid": null,
+                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+                "ip": "105.127.8.176",
+                "gaClientId": null,
+                "gaSessionId": null,
+                "medium": "form",
+                "mediumId": "UtRYwKYh0FKcvoYFxA3d",
+                "adName": null,
+                "adGroupId": null,
+                "adId": null,
+                "gbraid": null,
+                "wbraid": null
+              }
+            },
+            "attributionSource": {
+              "sessionSource": "Direct traffic",
+              "url": "https://link.apisystem.tech/widget/form/UtRYwKYh0FKcvoYFxA3d",
+              "utmSource": null,
+              "utmMedium": null,
+              "utmContent": null,
+              "utmTerm": null,
+              "utmKeyword": null,
+              "utmMatchtype": null,
+              "referrer": null,
+              "gclid": null,
+              "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+              "ip": "105.127.8.176",
+              "gaClientId": null,
+              "gaSessionId": null,
+              "medium": "form",
+              "mediumId": "UtRYwKYh0FKcvoYFxA3d",
+              "adName": null,
+              "adGroupId": null,
+              "adId": null,
+              "gbraid": null,
+              "wbraid": null
+            },
+            "customData": {}
+          },
+          "webhookUrl": "https://axias.app.n8n.cloud/webhook/0d376ba3-da1f-4e50-83b0-2ed415a703db",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Create sheet3": [
+      {
+        "json": {
+          "spreadsheetId": "1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw",
+          "sheetId": 1458175053,
+          "title": "Lookmn Testtyy+lamY6Xl8mONXXStFWawq",
+          "index": 5,
+          "sheetType": "GRID",
+          "gridProperties": {
+            "rowCount": 1000,
+            "columnCount": 26
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Code in JavaScript1": [
+      {
+        "json": {
+          "spreadsheetId": "1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw",
+          "sheetId": 1458175053,
+          "sheetTitle": "Lookmn Testtyy lamY6Xl8mONXXStFWawq",
+          "fullName": "Lookmn Testtyy",
+          "contactId": "lamY6Xl8mONXXStFWawq",
+          "procedure": "respiratory system",
+          "dob": "06/01/2026",
+          "phone": "+13055207492",
+          "dateOfSurgery": "1/10/2026",
+          "insurance": "Nil",
+          "dateOfSubmission": "06/15/2026",
+          "body": "{\"requests\":[{\"updateCells\":{\"rows\":[{\"values\":[{\"userEnteredValue\":{\"stringValue\":\"Name\"}},{\"userEnteredValue\":{\"stringValue\":\"Date of Birth\"}},{\"userEnteredValue\":{\"stringValue\":\"Date of Surgery\"}},{\"userEnteredValue\":{\"stringValue\":\"Consent To Read\"}},{\"userEnteredValue\":{\"stringValue\":\"Date of Submission\"}},{\"userEnteredValue\":{\"stringValue\":\"Insurance\"}},{\"userEnteredValue\":{\"stringValue\":\"Member ID\"}},{\"userEnteredValue\":{\"stringValue\":\"Auth NO\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 30140 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 30520 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 30901 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 31231 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 31254 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 31255 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 31267 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 31276 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 31575 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 31622 Status\"}}]}],\"fields\":\"userEnteredValue\",\"start\":{\"sheetId\":1458175053,\"rowIndex\":0,\"columnIndex\":0}}},{\"updateCells\":{\"rows\":[{\"values\":[{\"userEnteredValue\":{\"stringValue\":\"Lookmn Testtyy\"}},{\"userEnteredValue\":{\"stringValue\":\"06/01/2026\"}},{\"userEnteredValue\":{\"stringValue\":\"1/10/2026\"}},{\"userEnteredValue\":{\"stringValue\":\"respiratory system\"}},{\"userEnteredValue\":{\"stringValue\":\"06/15/2026\"}},{\"userEnteredValue\":{\"stringValue\":\"Nil\"}},{\"userEnteredValue\":{\"stringValue\":\"lamY6Xl8mONXXStFWawq\"}},{\"userEnteredValue\":{\"stringValue\":\"Nil\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}}]}],\"fields\":\"userEnteredValue\",\"start\":{\"sheetId\":1458175053,\"rowIndex\":1,\"columnIndex\":0}}},{\"setDataValidation\":{\"range\":{\"sheetId\":1458175053,\"startRowIndex\":1,\"endRowIndex\":500,\"startColumnIndex\":8,\"endColumnIndex\":9},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":1458175053,\"startRowIndex\":1,\"endRowIndex\":500,\"startColumnIndex\":9,\"endColumnIndex\":10},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":1458175053,\"startRowIndex\":1,\"endRowIndex\":500,\"startColumnIndex\":10,\"endColumnIndex\":11},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":1458175053,\"startRowIndex\":1,\"endRowIndex\":500,\"startColumnIndex\":11,\"endColumnIndex\":12},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":1458175053,\"startRowIndex\":1,\"endRowIndex\":500,\"startColumnIndex\":12,\"endColumnIndex\":13},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":1458175053,\"startRowIndex\":1,\"endRowIndex\":500,\"startColumnIndex\":13,\"endColumnIndex\":14},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":1458175053,\"startRowIndex\":1,\"endRowIndex\":500,\"startColumnIndex\":14,\"endColumnIndex\":15},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":1458175053,\"startRowIndex\":1,\"endRowIndex\":500,\"startColumnIndex\":15,\"endColumnIndex\":16},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":1458175053,\"startRowIndex\":1,\"endRowIndex\":500,\"startColumnIndex\":16,\"endColumnIndex\":17},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":1458175053,\"startRowIndex\":1,\"endRowIndex\":500,\"startColumnIndex\":17,\"endColumnIndex\":18},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}}]}"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "HTTP Request all in one": [
+      {
+        "json": {
+          "spreadsheetId": "1NX8UOVi4MZjm0nEk0Aq1k6wSFVmylSej-Pwg2n94tPw",
+          "replies": [
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "CPT Codes - SFLMED1": [
+      {
+        "json": {
+          "output": "[\"31622\", \"31623\", \"31624\", \"31625\", \"31628\", \"31629\", \"31640\", \"31645\", \"31646\", {\"note\": \"Surgeon not specified; respiratory system CPT codes provided based on standard bronchoscopic procedure set\"}]"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Webhook3": [
+      {
+        "json": {
+          "headers": {
+            "host": "axias.app.n8n.cloud",
+            "user-agent": "PostmanRuntime/7.54.0",
+            "content-length": "283",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "cache-control": "no-cache",
+            "cdn-loop": "cloudflare; loops=1; subreqs=1",
+            "cf-connecting-ip": "54.86.50.139",
+            "cf-ew-via": "15",
+            "cf-ipcountry": "US",
+            "cf-ray": "a117d1fabac8c9a9-IAD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-worker": "n8n.cloud",
+            "content-type": "application/json",
+            "postman-token": "2095bee4-1360-4511-8886-ee46cb62e9d7",
+            "x-forwarded-for": "54.86.50.139, 172.68.245.205",
+            "x-forwarded-host": "axias.app.n8n.cloud",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik-prod-users-gwc-68-7c7c9cfb8b-bzssk",
+            "x-is-trusted": "yes",
+            "x-real-ip": "54.86.50.139"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "full_name": "Janet Doet",
+            "contact_id": "test0012",
+            "date_of_birth": "1985-06-15T00:00:00.000Z",
+            "phone": "+13055551234",
+            "CONSENT TO READ:": "Angiogram",
+            "Requested Date for surgery (Approximate)": "07/15/2026",
+            "Insurance Provider Name": "Blue Cross Blue Shield"
+          },
+          "webhookUrl": "https://axias.app.n8n.cloud/webhook-test/0d376ba3-da1f-4e50-83b0-2ed415a703db",
+          "executionMode": "test"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Extract Webhook1": [
+      {
+        "json": {
+          "fullName": "Janet Doet",
+          "contactId": "test0012",
+          "dob": "06/15/1985",
+          "procedure": "Angiogram",
+          "dateOfSurgery": "07/15/2026",
+          "insurance": "Blue Cross Blue Shield",
+          "dateOfSubmission": "06/25/2026",
+          "sheetTitle": "Janet Doet test0012",
+          "predefinedCptCodes": [
+            "36245",
+            "36246",
+            "36247",
+            "36248",
+            "37184",
+            "37252",
+            "37253",
+            "37254",
+            "37255",
+            "37256",
+            "37257",
+            "37258",
+            "37259",
+            "37260",
+            "37261",
+            "37263",
+            "37265",
+            "37267",
+            "37269",
+            "37271",
+            "37273",
+            "37275",
+            "37277",
+            "37280",
+            "37281",
+            "37282",
+            "37283",
+            "37284",
+            "37285",
+            "37286",
+            "37287",
+            "37288",
+            "37289",
+            "37290",
+            "37291",
+            "37292",
+            "37293",
+            "37294",
+            "37295",
+            "75625",
+            "75710",
+            "75716",
+            "76937",
+            "99152",
+            "99153"
+          ],
+          "skipAgent": true
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Find Matching Sheet": [
+      {
+        "json": {
+          "sheetExists": false,
+          "sheetId": null,
+          "sheetTitle": "Janet Doet test0012"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Get Spreadsheet Metadata": [
+      {
+        "json": {
+          "sheets": [
+            {
+              "properties": {
+                "sheetId": 0,
+                "title": "Sheet1",
+                "index": 0,
+                "sheetType": "GRID",
+                "gridProperties": {
+                  "rowCount": 1000,
+                  "columnCount": 26
+                }
+              }
+            }
+          ]
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Build Sheet Update": [
+      {
+        "json": {
+          "sheetId": 2050317283,
+          "body": "{\"requests\":[{\"updateCells\":{\"rows\":[{\"values\":[{\"userEnteredValue\":{\"stringValue\":\"Name\"}},{\"userEnteredValue\":{\"stringValue\":\"Date of Birth\"}},{\"userEnteredValue\":{\"stringValue\":\"Date of Surgery\"}},{\"userEnteredValue\":{\"stringValue\":\"Consent To Read\"}},{\"userEnteredValue\":{\"stringValue\":\"Date of Submission\"}},{\"userEnteredValue\":{\"stringValue\":\"Insurance\"}},{\"userEnteredValue\":{\"stringValue\":\"Member ID\"}},{\"userEnteredValue\":{\"stringValue\":\"Auth No\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 36245 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 36246 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 36247 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 36248 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37184 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37252 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37253 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37254 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37255 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37256 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37257 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37258 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37259 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37260 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37261 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37263 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37265 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37267 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37269 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37271 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37273 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37275 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37277 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37280 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37281 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37282 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37283 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37284 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37285 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37286 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37287 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37288 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37289 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37290 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37291 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37292 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37293 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37294 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 37295 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 75625 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 75710 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 75716 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 76937 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 99152 Status\"}},{\"userEnteredValue\":{\"stringValue\":\"CPT 99153 Status\"}}]}],\"fields\":\"userEnteredValue\",\"start\":{\"sheetId\":2050317283,\"rowIndex\":0,\"columnIndex\":0}}},{\"updateCells\":{\"rows\":[{\"values\":[{\"userEnteredValue\":{\"stringValue\":\"Janet Doet\"}},{\"userEnteredValue\":{\"stringValue\":\"06/15/1985\"}},{\"userEnteredValue\":{\"stringValue\":\"07/15/2026\"}},{\"userEnteredValue\":{\"stringValue\":\"Angiogram\"}},{\"userEnteredValue\":{\"stringValue\":\"06/25/2026\"}},{\"userEnteredValue\":{\"stringValue\":\"Blue Cross Blue Shield\"}},{\"userEnteredValue\":{\"stringValue\":\"test0012\"}},{\"userEnteredValue\":{\"stringValue\":\"Nil\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}},{\"userEnteredValue\":{\"stringValue\":\"New\"}}]}],\"fields\":\"userEnteredValue\",\"start\":{\"sheetId\":2050317283,\"rowIndex\":1,\"columnIndex\":0}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":8,\"endColumnIndex\":9},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":9,\"endColumnIndex\":10},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":10,\"endColumnIndex\":11},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":11,\"endColumnIndex\":12},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":12,\"endColumnIndex\":13},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":13,\"endColumnIndex\":14},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":14,\"endColumnIndex\":15},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":15,\"endColumnIndex\":16},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":16,\"endColumnIndex\":17},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":17,\"endColumnIndex\":18},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":18,\"endColumnIndex\":19},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":19,\"endColumnIndex\":20},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":20,\"endColumnIndex\":21},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":21,\"endColumnIndex\":22},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":22,\"endColumnIndex\":23},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":23,\"endColumnIndex\":24},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":24,\"endColumnIndex\":25},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":25,\"endColumnIndex\":26},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":26,\"endColumnIndex\":27},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":27,\"endColumnIndex\":28},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":28,\"endColumnIndex\":29},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":29,\"endColumnIndex\":30},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":30,\"endColumnIndex\":31},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":31,\"endColumnIndex\":32},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":32,\"endColumnIndex\":33},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":33,\"endColumnIndex\":34},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":34,\"endColumnIndex\":35},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":35,\"endColumnIndex\":36},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":36,\"endColumnIndex\":37},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":37,\"endColumnIndex\":38},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":38,\"endColumnIndex\":39},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":39,\"endColumnIndex\":40},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":40,\"endColumnIndex\":41},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":41,\"endColumnIndex\":42},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":42,\"endColumnIndex\":43},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":43,\"endColumnIndex\":44},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":44,\"endColumnIndex\":45},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":45,\"endColumnIndex\":46},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":46,\"endColumnIndex\":47},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":47,\"endColumnIndex\":48},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":48,\"endColumnIndex\":49},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":49,\"endColumnIndex\":50},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":50,\"endColumnIndex\":51},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":51,\"endColumnIndex\":52},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}},{\"setDataValidation\":{\"range\":{\"sheetId\":2050317283,\"startRowIndex\":1,\"endRowIndex\":2,\"startColumnIndex\":52,\"endColumnIndex\":53},\"rule\":{\"condition\":{\"type\":\"ONE_OF_LIST\",\"values\":[{\"userEnteredValue\":\"New\"},{\"userEnteredValue\":\"Authenticated\"},{\"userEnteredValue\":\"Auth Approved\"},{\"userEnteredValue\":\"MR Requested / Appealed\"},{\"userEnteredValue\":\"Final\"},{\"userEnteredValue\":\"Denied\"}]},\"strict\":true,\"showCustomUi\":true}}}]}"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "HTTP Request3": [
+      {
+        "json": {
+          "spreadsheetId": "1SLnqd-RfXCUqPpKOXe6pq0kkUmlXHBbtV1ss6xHIjzE",
+          "replies": [
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Create sheet1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create sheet2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CPT Codes - SFLMED": {
+      "main": [
+        [
+          {
+            "node": "Create sheet3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "CPT Codes - SFLMED",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "CPT Codes - SFLMED",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook - Fistulagram": {
+      "main": [
+        [
+          {
+            "node": "Create sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook - GSV": {
+      "main": [
+        [
+          {
+            "node": "Create sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Create sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create sheet": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request all in one": {
+      "main": [
+        []
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "CPT Codes - SFLMED",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request all in one",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create sheet3": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CPT Codes - SFLMED1": {
+      "main": [
+        [
+          {
+            "node": "Get Spreadsheet Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook3": {
+      "main": [
+        [
+          {
+            "node": "Extract Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "CPT Codes - SFLMED1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "CPT Codes - SFLMED1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Spreadsheet Metadata": {
+      "main": [
+        [
+          {
+            "node": "Find Matching Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Matching Sheet": {
+      "main": [
+        [
+          {
+            "node": "{{ $json.sheetExists }} is true",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "{{ $json.sheetExists }} is true": {
+      "main": [
+        [
+          {
+            "node": "Get Existing Values",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Add Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Sheet": {
+      "main": [
+        [
+          {
+            "node": "Build Sheet Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Existing Values": {
+      "main": [
+        [
+          {
+            "node": "Build Sheet Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Sheet Update": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If (Skip Agent?)": {
+      "main": [
+        [
+          {
+            "node": "Get Spreadsheet Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CPT Codes - SFLMED1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Webhook1": {
+      "main": [
+        [
+          {
+            "node": "If (Skip Agent?)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5dccc7f6-37ab-4e23-b9c3-90ea84fa8e41",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "bd0a5a1c4eb46211fb448e3fc16e58e4829fbe9b1e62f4e108040979ad7c6f6a"
+  },
+  "id": "iioKBT531ZVroIJt",
+  "tags": []
+}
